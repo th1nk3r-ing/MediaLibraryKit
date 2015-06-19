@@ -27,7 +27,8 @@
 - (NSString *)relativePathForFullPath:(NSString *)fullPath
 {
     NSArray *components = [fullPath componentsSeparatedByString:@"Documents"];
-    return [components.lastObject stringByRemovingPercentEncoding];
+    // Note: stringByRemovingPercentEncoding is iOS 7+ only
+    return [components.lastObject stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 @end
