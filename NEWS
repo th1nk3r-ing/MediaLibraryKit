@@ -1,3 +1,15 @@
+Version 2.5.5
+-------------
+* Stability improvements
+
+Version 2.5.4
+-------------
+* Stability improvements
+
+Version 2.5.3
+-------------
+* Stability improvements
+
 Version 2.5.2
 -------------
 * Smaller library size by increased dead code stripping
