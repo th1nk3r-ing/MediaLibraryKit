@@ -78,6 +78,7 @@ NSString *const MLFileThumbnailWasUpdated = @"MLFileThumbnailWasUpdated";
 
 + (NSArray *)fileForURL:(NSURL *)url;
 {
+    if (!url) return nil;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSManagedObjectContext *moc = [[MLMediaLibrary sharedMediaLibrary] managedObjectContext];
     if (!moc || moc.persistentStoreCoordinator == nil)
