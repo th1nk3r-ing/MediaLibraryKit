@@ -1,3 +1,8 @@
+Version 2.6.5
+-------------
+* Fixed a duplication of Files with cyrillic letters
+* Fix behavior when used in restricted environments with no access to app groups
+
 Version 2.6.4
 -------------
 * Added unstable Cocoapods spec
