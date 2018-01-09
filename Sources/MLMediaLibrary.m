@@ -824,6 +824,7 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
         // on iPhone we only save relative paths ins the DB
         relativePath = [self pathRelativeToDocumentsFolderFromAbsolutPath:path];
 #endif
+        relativePath = [relativePath decomposedStringWithCanonicalMapping];
         [urlToObject setObject:path forKey:relativePath];
         [fetchPredicates addObject:[NSPredicate predicateWithFormat:@"path == %@", relativePath]];
     }
@@ -844,6 +845,7 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
     // Remove objects that are already in db.
     for (MLFile *dbResult in dbResults) {
         NSString *path = dbResult.path;
+        path = [path decomposedStringWithCanonicalMapping];
         [filePathsToAdd removeObject:[urlToObject objectForKey:path]];
     }
 
