@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MediaLibraryKit-prod"
-  s.version      = "2.6.5"
+  s.version      = "2.6.6"
   s.summary      = "A MediaLibrary framework in Objective-C for iOS and OS X"
 
   s.description  = <<-DESC
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.watchos.xcconfig = { "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) MLKIT_READONLY_TARGET" }
-  s.ios.dependency "MobileVLCKit", "~>3.0.1"
+  s.ios.dependency "MobileVLCKit", "~>3.1.0"
   s.static_framework = true
 
 end
