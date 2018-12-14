@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MediaLibraryKit-prod"
-  s.version      = "2.6.6"
+  s.version      = "2.6.7"
   s.summary      = "A MediaLibrary framework in Objective-C for iOS and OS X"
 
   s.description  = <<-DESC
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.authors            = { "Pierre d'Herbemont" => "pdherbemont@videolan.org", "Felix Paul Kühne" => "fkuehne@videolan.org", "Tobias Conradi" => "videolan@tobias-conradi.de", "Carola Nitz" => "caro@videolan.org" }
   s.social_media_url   = "http://twitter.com/videolan"
 
-  s.ios.deployment_target = "7.0"
+  s.ios.deployment_target = "8.4"
   s.watchos.deployment_target = "2.0"
   # s.osx.deployment_target = "10.7"
   # s.tvos.deployment_target = "9.0"
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.watchos.xcconfig = { "GCC_PREPROCESSOR_DEFINITIONS" => "$(inherited) MLKIT_READONLY_TARGET" }
-  s.ios.dependency "MobileVLCKit", "~>3.1.0"
+  s.ios.dependency "MobileVLCKit", "~>3.2.0"
   s.static_framework = true
 
 end
