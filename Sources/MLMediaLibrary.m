@@ -384,38 +384,40 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
 - (void)savePendingChanges
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(savePendingChanges) object:nil];
-    NSError *error = nil;
     NSManagedObjectContext *moc = [self managedObjectContext];
     if (!moc)
         return;
 
-    BOOL success = NO;
-    @try {
-        success = [[self managedObjectContext] save:&error];
-    }
-    @catch (NSException *exception) {
-        APLog(@"Saving pending changes failed");
-    }
+    [moc performBlockAndWait:^{
+        NSError *error = nil;
+        @try {
+            [moc save:&error];
+        }
+        @catch (NSException *exception) {
+            APLog(@"Saving pending changes failed");
+        }
 #if !TARGET_OS_IPHONE && MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_5
-    NSProcessInfo *process = [NSProcessInfo processInfo];
-    if ([process respondsToSelector:@selector(enableSuddenTermination)])
-        [process enableSuddenTermination];
+        NSProcessInfo *process = [NSProcessInfo processInfo];
+        if ([process respondsToSelector:@selector(enableSuddenTermination)])
+            [process enableSuddenTermination];
 #endif
+    }
 }
 
 - (void)save
 {
-    NSError *error = nil;
     NSManagedObjectContext *moc = [self managedObjectContext];
     if (!moc)
         return;
 
-    BOOL success = NO;
-    @try {
-        success = [moc save:&error];
-    }
-    @catch (NSException *exception) {
-        APLog(@"Saving changes failed");
+    [moc performBlock:{
+        NSError *error = nil;
+        @try {
+            [moc save:&error];
+        }
+        @catch (NSException *exception) {
+            APLog(@"Saving changes failed");
+        }
     }
 }
 
