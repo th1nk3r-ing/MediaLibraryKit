@@ -1,3 +1,15 @@
+Version 2.6.8
+-------------
+* Fix runtime exception when attempting to save pending changes
+
+Version 2.6.7
+-------------
+* Updated Cocoapods spec
+
+Version 2.6.6
+-------------
+* Updated Cocoapods spec
+
 Version 2.6.5
 -------------
 * Fixed a duplication of Files with cyrillic letters
