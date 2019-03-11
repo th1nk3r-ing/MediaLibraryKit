@@ -401,7 +401,7 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
         if ([process respondsToSelector:@selector(enableSuddenTermination)])
             [process enableSuddenTermination];
 #endif
-    }
+    }];
 }
 
 - (void)save
@@ -409,8 +409,7 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
     NSManagedObjectContext *moc = [self managedObjectContext];
     if (!moc)
         return;
-
-    [moc performBlock:{
+    [moc performBlock:^{
         NSError *error = nil;
         @try {
             [moc save:&error];
@@ -418,7 +417,7 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
         @catch (NSException *exception) {
             APLog(@"Saving changes failed");
         }
-    }
+    }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
