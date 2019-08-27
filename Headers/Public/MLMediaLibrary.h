@@ -75,6 +75,7 @@
 - (void)applicationWillExit;
 
 - (void)save;
+- (void)saveWithCompletionHandler:(void (^)(BOOL success))completionHandler;
 - (void)libraryDidDisappear;
 - (void)libraryDidAppear;
 

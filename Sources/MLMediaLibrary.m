@@ -404,7 +404,7 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
     }];
 }
 
-- (void)save
+- (void)saveWithCompletionHandler:(void (^)(BOOL success))completionHandler
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     if (!moc)
@@ -412,12 +412,21 @@ static NSString *kDecrapifyTitles = @"MLDecrapifyTitles";
     [moc performBlock:^{
         NSError *error = nil;
         @try {
-            [moc save:&error];
+            BOOL success = [moc save:&error];
+
+            if (completionHandler != nil) {
+                completionHandler(success);
+            }
         }
         @catch (NSException *exception) {
             APLog(@"Saving changes failed");
         }
     }];
+}
+
+- (void)save
+{
+    [self saveWithCompletionHandler:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
