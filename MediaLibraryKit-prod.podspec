@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "MediaLibraryKit-prod"
-  s.version      = "2.6.8"
+  s.version      = "2.6.9"
   s.summary      = "A MediaLibrary framework in Objective-C for iOS and OS X"
 
   s.description  = <<-DESC

@@ -1,3 +1,7 @@
+Version 2.6.9
+-------------
+* Add saveWithCompletionHandler to fix runtime crashes
+
 Version 2.6.8
 -------------
 * Fix runtime exception when attempting to save pending changes
