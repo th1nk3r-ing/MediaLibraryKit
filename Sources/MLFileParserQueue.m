@@ -198,7 +198,7 @@
 
     @try {
         [file setTracks:tracksSet];
-        [file setDuration:[[_media length] numberValue]];
+        [file setDuration:[[_media length] value]];
     }
     @catch (NSException *exception) {
         APLog(@"we failed to write some metadata because the file disappeared in front of us");
